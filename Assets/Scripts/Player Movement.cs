@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public class scr : MonoBehaviour
     public float jumpHeight;
     public Rigidbody2D rb2d;
     private Vector2 movement;
+    private bool grounded;
 
     // Update is called once per frame
     void Update()
@@ -22,10 +24,24 @@ public class scr : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && grounded)
         {
-        rb2d.linearVelocityY = jumpHeight;
+            rb2d.linearVelocityY = jumpHeight;
 
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            grounded = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            grounded = false;
         }
     }
 }
