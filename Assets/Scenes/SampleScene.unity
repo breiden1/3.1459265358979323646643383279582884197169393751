@@ -821,7 +821,7 @@ Transform:
   m_GameObject: {fileID: 917143706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.63, y: -1.33, z: 0}
+  m_LocalPosition: {x: -2.46, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -925,9 +925,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a03a627d385efa45b6ef5584d5e2a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 33
+  moveSpeed: 5
+  playerHp: 10
   player: {fileID: 1764927969}
-  attackDistanceThreshold: 2
+  attackDistanceThreshold: 1.3
+  totalCooldownTime: 2
 --- !u!1001 &1321984091
 PrefabInstance:
   m_ObjectHideFlags: 0
