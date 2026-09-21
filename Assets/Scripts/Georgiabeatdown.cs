@@ -3,9 +3,11 @@ using UnityEngine.InputSystem;
 
 public class Geogiabeatdown : MonoBehaviour
 {
-     void Start()
+    public float attackRadius = 1.5f;
+    public LayerMask attackLayer;
+    void Start()
     {
-        
+
     }
 
 
@@ -19,6 +21,17 @@ public class Geogiabeatdown : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Attack!");
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, attackRadius, Vector2.zero, 0, attackLayer);
+
+        if (hit)
+        {
+            Debug.Log(hit.collider.gameObject.name);
+        }
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }
