@@ -9,7 +9,7 @@ public class scri : MonoBehaviour
     Transform target;
     SpriteRenderer sprt;
     public GameObject player;
-    public float attackDistanceThreshold = 2f;
+    public float attackDistanceThreshold = 0f;
     private bool isGrounded;
 
     Vector2 moveDirection;
@@ -46,7 +46,11 @@ public class scri : MonoBehaviour
                 rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
             }
         }
-    }
+        if (distance < attackDistanceThreshold)
+        {
+            rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y) * 0;
+        }
+        }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
