@@ -926,6 +926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   moveSpeed: 33
+  player: {fileID: 1764927969}
+  attackDistanceThreshold: 2
 --- !u!1001 &1321984091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,6 +997,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05fa09503c3ba634b9a8baa77961711a, type: 3}
+--- !u!1 &1764927969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4934820083366338258, guid: 05fa09503c3ba634b9a8baa77961711a, type: 3}
+  m_PrefabInstance: {fileID: 1321984091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1783759904
 GameObject:
   m_ObjectHideFlags: 0
