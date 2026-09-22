@@ -5,6 +5,7 @@ public class Geogiabeatdown : MonoBehaviour
 {
     public float attackRadius = 1.5f;
     public LayerMask attackLayer;
+
     void Start()
     {
 
@@ -25,6 +26,7 @@ public class Geogiabeatdown : MonoBehaviour
 
         if (hit)
         {
+
             Debug.Log(hit.collider.gameObject.name);
         }
     }
