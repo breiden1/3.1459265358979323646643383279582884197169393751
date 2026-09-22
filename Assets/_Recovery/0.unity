@@ -270,7 +270,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -365,7 +364,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -396,20 +395,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd9aebe67c7dc514d9181c56b77ba3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  player: {fileID: 1764927975}
-  Speed: 5
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +745,7 @@ GameObject:
   - component: {fileID: 917143710}
   - component: {fileID: 917143709}
   - component: {fileID: 917143712}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: jersey-dude_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,7 +821,7 @@ Transform:
   m_GameObject: {fileID: 917143706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.46, y: -1.5, z: 0}
+  m_LocalPosition: {x: -2.63, y: -1.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -940,12 +925,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a03a627d385efa45b6ef5584d5e2a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 5
-  playerHp: 10
-  player: {fileID: 1764927969}
+  moveSpeed: 4
+  acceleration: 80
+  deceleration: 100
   attackDistanceThreshold: 1.3
-  maxAttackDistanceThreshold: 12
-  totalCooldownTime: 1
+  stoppingDistance: 1.5
+  player: {fileID: 1764927969}
 --- !u!1001 &1321984091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -956,11 +941,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1609549916312119369, guid: 05fa09503c3ba634b9a8baa77961711a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.27
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 1609549916312119369, guid: 05fa09503c3ba634b9a8baa77961711a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2
+      value: -1.13
       objectReference: {fileID: 0}
     - target: {fileID: 1609549916312119369, guid: 05fa09503c3ba634b9a8baa77961711a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -994,10 +979,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2190312073039098028, guid: 05fa09503c3ba634b9a8baa77961711a, type: 3}
-      propertyPath: speed
-      value: 5.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2798584132604329590, guid: 05fa09503c3ba634b9a8baa77961711a, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -1022,11 +1003,6 @@ PrefabInstance:
 --- !u!1 &1764927969 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4934820083366338258, guid: 05fa09503c3ba634b9a8baa77961711a, type: 3}
-  m_PrefabInstance: {fileID: 1321984091}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1764927975 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1609549916312119369, guid: 05fa09503c3ba634b9a8baa77961711a, type: 3}
   m_PrefabInstance: {fileID: 1321984091}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1783759904

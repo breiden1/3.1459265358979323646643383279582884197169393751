@@ -11,6 +11,7 @@ public class scri : MonoBehaviour
     SpriteRenderer sprt;
     public GameObject player;
     public float attackDistanceThreshold = 0f;
+    public float maxAttackDistanceThreshold = 15f;
     private bool isGrounded;
     public float totalCooldownTime = 2.0f;
     private float currentCooldownTime = 0.0f;
@@ -37,41 +38,43 @@ public class scri : MonoBehaviour
         Vector2 playerpos = player.transform.position;
         Vector2 mypos = transform.position;
         float distance = Vector2.Distance(mypos, playerpos);
-
-        if (distance > attackDistanceThreshold)
+        if (distance < maxAttackDistanceThreshold)
         {
-            if (target)
+            if (distance > attackDistanceThreshold)
             {
-                Vector3 direction = (target.position - transform.position).normalized;
-                moveDirection = direction;
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                if (target)
+                {
+                    Vector3 direction = (target.position - transform.position).normalized;
+                    moveDirection = direction;
+                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-                //target.position.x
-                //sprt.flipX = true;
-                rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y - moveDirection.y) * moveSpeed;
+                    //target.position.x
+                    //sprt.flipX = true;
+                    rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y - moveDirection.y) * moveSpeed;
+
+                }
+            }
+
+            if (distance < attackDistanceThreshold)
+            {
+                rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y) * 0;
+            }
+            if (distance < attackDistanceThreshold && currentCooldownTime <= 0.0f)
+            {
+                float v = playerHp -= 3;
+                currentCooldownTime = totalCooldownTime;
+                Debug.Log("ow");
+            }
+
+            if (playerHp <= 0)
+            {
+                Destroy(player);
 
             }
-        }
 
-        if (distance < attackDistanceThreshold)
-        {
-            rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y) * 0;
+            currentCooldownTime -= Time.deltaTime;
         }
-        if (distance < attackDistanceThreshold && currentCooldownTime <= 0.0f)
-        {
-            float v = playerHp -= 3;
-            currentCooldownTime = totalCooldownTime;
-            Debug.Log("ow");
-        }
-
-        if (playerHp <= 0)
-        {
-            Debug.Log("die");
-        }
-
-        currentCooldownTime -= Time.deltaTime;
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
