@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: jersey-run
+  m_Name: New Animation
   serializedVersion: 8
   m_Legacy: 0
   m_Compressed: 0
@@ -22,12 +22,10 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -6923821702067028260, guid: 8285fef5dd9c24e438a88e92d64f8d1a, type: 3}
-    - time: 0.2
-      value: {fileID: 7416912705605716710, guid: 8285fef5dd9c24e438a88e92d64f8d1a, type: 3}
-    - time: 0.4
-      value: {fileID: -2978145523503396051, guid: 8285fef5dd9c24e438a88e92d64f8d1a, type: 3}
-    - time: 0.51666665
-      value: {fileID: -6923821702067028260, guid: 8285fef5dd9c24e438a88e92d64f8d1a, type: 3}
+    - time: 0.21666667
+      value: {fileID: 5998458423659098438, guid: b4572b24d52375443a25f1e9026478c3, type: 3}
+    - time: 0.36666667
+      value: {fileID: 5998458423659098438, guid: b4572b24d52375443a25f1e9026478c3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,15 +50,14 @@ AnimationClip:
       metaData: 0
     pptrCurveMapping:
     - {fileID: -6923821702067028260, guid: 8285fef5dd9c24e438a88e92d64f8d1a, type: 3}
-    - {fileID: 7416912705605716710, guid: 8285fef5dd9c24e438a88e92d64f8d1a, type: 3}
-    - {fileID: -2978145523503396051, guid: 8285fef5dd9c24e438a88e92d64f8d1a, type: 3}
-    - {fileID: -6923821702067028260, guid: 8285fef5dd9c24e438a88e92d64f8d1a, type: 3}
+    - {fileID: 5998458423659098438, guid: b4572b24d52375443a25f1e9026478c3, type: 3}
+    - {fileID: 5998458423659098438, guid: b4572b24d52375443a25f1e9026478c3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5333333
+    m_StopTime: 0.38333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
