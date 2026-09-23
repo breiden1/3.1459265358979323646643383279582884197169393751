@@ -140,7 +140,7 @@ TextureImporter:
         width: 17
         height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -157,12 +157,12 @@ TextureImporter:
       name: jeryseyman-punch_1
       rect:
         serializedVersion: 2
-        x: 22
+        x: 18
         y: 77
-        width: 21
+        width: 25
         height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -179,12 +179,12 @@ TextureImporter:
       name: jeryseyman-punch_2
       rect:
         serializedVersion: 2
-        x: 22
+        x: 14
         y: 13
-        width: 25
+        width: 33
         height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -201,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2aebefee85ed7c448b53eef43fb21dba
     internalID: 0
     vertices: []
     indices: 

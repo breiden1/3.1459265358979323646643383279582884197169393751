@@ -16,6 +16,7 @@ public class ccri2 : MonoBehaviour
     public float totalCooldownTime = 2.0f;
     private float currentCooldownTime = 0.0f;
 
+    public Animator animator;
     Vector2 moveDirection;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,6 +28,7 @@ public class ccri2 : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         target = GameObject.Find("main-man_0").transform;
     }
 
@@ -61,11 +63,17 @@ public class ccri2 : MonoBehaviour
             }
             if (distance < attackDistanceThreshold && currentCooldownTime <= 0.0f)
             {
+                animator.SetBool("attack", true);
                 float v = playerHp -= 3;
                 currentCooldownTime = totalCooldownTime;
                 Debug.Log("ow");
+                
             }
-
+            if (currentCooldownTime <= 0f)
+            {
+                animator.SetBool("attack", false);
+                Debug.Log("unow");
+            }
             if (playerHp <= 0)
             {
                 Destroy(player);

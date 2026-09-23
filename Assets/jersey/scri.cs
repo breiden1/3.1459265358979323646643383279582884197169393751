@@ -15,7 +15,7 @@ public class scri : MonoBehaviour
     private bool isGrounded;
     public float totalCooldownTime = 2.0f;
     private float currentCooldownTime = 0.0f;
-
+    public Animator animator;
     Vector2 moveDirection;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,6 +27,7 @@ public class scri : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         target = GameObject.Find("main-man_0").transform;
     }
 
@@ -61,11 +62,16 @@ public class scri : MonoBehaviour
             }
             if (distance < attackDistanceThreshold && currentCooldownTime <= 0.0f)
             {
+                animator.SetTrigger("punch");
+
                 float v = playerHp -= 3;
                 currentCooldownTime = totalCooldownTime;
                 Debug.Log("ow");
             }
-
+            if (currentCooldownTime <= 0f)
+            {
+                Debug.Log("unow");
+            }
             if (playerHp <= 0)
             {
                 Destroy(player);
@@ -74,6 +80,8 @@ public class scri : MonoBehaviour
 
             currentCooldownTime -= Time.deltaTime;
         }
+
+        animator.SetFloat("speed", Mathf.Abs(rb.linearVelocityX));
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
