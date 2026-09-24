@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 89573cd9ac965374ea823624d78f4783
+guid: 82294f571d90a01438e883b2b1f69d71
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 5
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -101,7 +101,7 @@ ScriptedImporter:
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
-  platformSettingsDirtyTick: 639258373380500111
+  platformSettingsDirtyTick: 639258381335921995
   singleSpriteImportData:
   - name: 
     originalName: 
@@ -125,9 +125,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: house
+  - name: spekes
     originalName: 
-    pivot: {x: 0.28, y: -0.7777778}
+    pivot: {x: 0.47727272, y: -1.2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -135,9 +135,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 25
-      height: 36
-    spriteID: b22eef8aa25507f4aa830dd9a66dc32c
+      width: 44
+      height: 5
+    spriteID: a10df6f2ff9bdcf4894cc30e31f9ee8c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -151,25 +151,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 82772026
+      value0: 3225362807
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: house
+    name: spekes
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: house
+    - name: spekes
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 25
-        y: 28
-        width: 25
-        height: 36
-      spriteId: b22eef8aa25507f4aa830dd9a66dc32c
+        x: 2
+        y: 6
+        width: 44
+        height: 5
+      spriteId: a10df6f2ff9bdcf4894cc30e31f9ee8c
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -214,5 +214,5 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
-  previousTextureSize: {x: 64, y: 64}
-  canvasSize: {x: 64, y: 64}
+  previousTextureSize: {x: 64, y: 16}
+  canvasSize: {x: 46, y: 45}
