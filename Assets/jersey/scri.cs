@@ -5,97 +5,102 @@ using UnityEngine;
 public class scri : MonoBehaviour
 {
     public float moveSpeed = 22f;
-    public float playerHp = 9f;
-    Rigidbody2D rb;
-    Transform target;
-    SpriteRenderer sprt;
+
     public GameObject player;
+
     public float attackDistanceThreshold = 0f;
     public float maxAttackDistanceThreshold = 15f;
-    private bool isGrounded;
+
+    public float damage = 3f;
+
     public float totalCooldownTime = 2.0f;
     private float currentCooldownTime = 0.0f;
-    public Animator animator;
-    Vector2 moveDirection;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Animator animator;
+
+    private Rigidbody2D rb;
+    private SpriteRenderer sprt;
+    private Transform target;
+    private Vector2 moveDirection;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprt = GetComponent<SpriteRenderer>();
     }
 
-    void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
-        target = GameObject.Find("main-man_0").transform;
+
+        if (player != null)
+        {
+            target = player.transform;
+        }
+        else
+        {
+            GameObject playerObject = GameObject.Find("main-man_0");
+
+            if (playerObject != null)
+            {
+                player = playerObject;
+                target = playerObject.transform;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (player == null || target == null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
 
+        float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        Vector2 playerpos = player.transform.position;
-        Vector2 mypos = transform.position;
-        float distance = Vector2.Distance(mypos, playerpos);
         if (distance < maxAttackDistanceThreshold)
         {
+            // Chase the player
             if (distance > attackDistanceThreshold)
             {
-                if (target)
-                {
-                    Vector3 direction = (target.position - transform.position).normalized;
-                    moveDirection = direction;
-                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                Vector3 direction = (target.position - transform.position).normalized;
 
-                    //target.position.x
-                    //sprt.flipX = true;
-                    rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y - moveDirection.y) * moveSpeed;
+                moveDirection = direction;
 
-                }
+                // Keep the enemy moving horizontally only
+                rb.linearVelocity = new Vector2(moveDirection.x * moveSpeed, rb.linearVelocity.y);
             }
-
-            if (distance < attackDistanceThreshold)
+            else
             {
-                rb.linearVelocity = new Vector2(moveDirection.x, moveDirection.y) * 0;
+                // Stop moving when close enough to attack
+                rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
             }
-            if (distance < attackDistanceThreshold && currentCooldownTime <= 0.0f)
+
+            // Attack
+            if (distance <= attackDistanceThreshold && currentCooldownTime <= 0f)
             {
                 animator.SetTrigger("punch");
 
-                float v = playerHp -= 3;
-                currentCooldownTime = totalCooldownTime;
-                Debug.Log("ow");
-            }
-            if (currentCooldownTime <= 0f)
-            {
-                Debug.Log("unow");
-            }
-            if (playerHp <= 0)
-            {
-                Destroy(player);
+                Health playerHealth = player.GetComponent<Health>();
 
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damage);
+                }
+
+                currentCooldownTime = totalCooldownTime;
+
+                Debug.Log("Enemy attacked player for " + damage + " damage.");
             }
 
             currentCooldownTime -= Time.deltaTime;
         }
+        else
+        {
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        }
 
         animator.SetFloat("speed", Mathf.Abs(rb.linearVelocityX));
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
     }
 }
