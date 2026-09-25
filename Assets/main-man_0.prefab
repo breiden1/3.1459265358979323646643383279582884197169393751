@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 354463595280076646}
   - component: {fileID: 8554543136991764136}
   - component: {fileID: 2190312073039098028}
+  - component: {fileID: 9219795775684016801}
+  - component: {fileID: 1502309072968376573}
   m_Layer: 0
   m_Name: main-man_0
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4934820083366338258}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.53363, y: -1.53915, z: 0}
+  m_LocalPosition: {x: 6.593, y: -0.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -122,7 +124,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &354463595280076646
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -302,6 +304,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6a7e39199f6a04184f7c06bdb5fa40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::scr
-  speed: 5
+  speed: 5.5
   jumpHeight: 5
   rb2d: {fileID: 5599699374308593782}
+--- !u!95 &9219795775684016801
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934820083366338258}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7086eec4d3467604a89b4a850ef2e7fc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1502309072968376573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934820083366338258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a842979348df347874d96da59e5673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  maxHealth: 9
+  currentHealth: 0
+  animator: {fileID: 9219795775684016801}

@@ -59,6 +59,16 @@ public class scri : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
+        // Face the player
+        if (target.position.x < transform.position.x)
+        {
+            sprt.flipX = true;
+        }
+        else if (target.position.x > transform.position.x)
+        {
+            sprt.flipX = false;
+        }
+
         if (distance < maxAttackDistanceThreshold)
         {
             // Chase the player
@@ -68,8 +78,10 @@ public class scri : MonoBehaviour
 
                 moveDirection = direction;
 
-                // Keep the enemy moving horizontally only
-                rb.linearVelocity = new Vector2(moveDirection.x * moveSpeed, rb.linearVelocity.y);
+                rb.linearVelocity = new Vector2(
+                    moveDirection.x * moveSpeed,
+                    rb.linearVelocity.y
+                );
             }
             else
             {

@@ -7,6 +7,8 @@ public class scr : MonoBehaviour
     public float jumpHeight = 10f;
 
     public Rigidbody2D rb2d;
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
 
     private Vector2 movement;
     private bool grounded;
@@ -14,12 +16,30 @@ public class scr : MonoBehaviour
     private void Update()
     {
         transform.Translate(movement * Time.deltaTime);
+
+        if (movement.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (movement.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     public void Move(InputAction.CallbackContext ctx)
     {
         float input = ctx.ReadValue<Vector2>().x;
         movement.x = input * speed;
+
+        if (input != 0)
+        {
+            animator.SetBool("walk", true);
+        }
+        else
+        {
+            animator.SetBool("walk", false);
+        }
     }
 
     public void Jump(InputAction.CallbackContext ctx)

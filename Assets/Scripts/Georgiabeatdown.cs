@@ -3,38 +3,44 @@ using UnityEngine.InputSystem;
 
 public class Geogiabeatdown : MonoBehaviour
 {
-    public float attackRadius = 1.5f;
-    public LayerMask attackLayer;
-    
-    void Start()
+    public float attackRange = 2f;
+    public float damage = 1f;
+    public float attackCooldown = 0.5f;
+
+    private float cooldown;
+
+    private void Update()
     {
-
+        if (cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+        }
     }
-
-
-
-    void Update()
-    {
-
-    }
-
-
 
     public void Attack(InputAction.CallbackContext ctx)
     {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, attackRadius, Vector2.zero, 0, attackLayer);
-
-        if (hit)
+        if (!ctx.performed || cooldown > 0)
         {
-            
-            Debug.Log(hit.collider.gameObject.name);
+            return;
         }
-        
-    }
 
+        cooldown = attackCooldown;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, attackRange);
+
+        foreach (Collider2D enemy in enemies)
+        {
+            if (enemy.CompareTag("Enemy"))
+            {
+                Enemy enemyScript = enemy.GetComponent<Enemy>();
+
+                if (enemyScript != null)
+                {
+                    enemyScript.TakeDamage(damage);
+                }
+
+                break;
+            }
+        }
     }
 }
